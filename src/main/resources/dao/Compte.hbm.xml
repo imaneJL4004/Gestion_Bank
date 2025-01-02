@@ -1,0 +1,21 @@
+<hibernate-mapping xmlns="http://www.hibernate.org/xsd/hibernate-mapping">
+    <class name="dao.Compte" table="COMPTE">
+        <id name="numero">
+            <column name="NUMERO"/>
+            <generator class="native"/>
+        </id>
+        <property name="dateCompte" type="java.util.Date">
+            <column name="DATE_COMPTE"/>
+        </property>
+        <property name="solde" type="java.lang.Double">
+            <column name="SOLDE"/>
+        </property>
+
+        <set name="operations" table="OPERATION" inverse="true" lazy="true" cascade="all">
+            <key>
+                <column name="NUMERO"/>
+            </key>
+            <one-to-many class="dao.Operation"/>
+        </set>
+    </class>
+</hibernate-mapping>

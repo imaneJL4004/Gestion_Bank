@@ -1,0 +1,27 @@
+
+
+<hibernate-mapping xmlns="http://www.hibernate.org/xsd/hibernate-mapping">
+    <class name="dao.Client" table="CLIENT">
+        <id name="codeClient">
+            <column name="CODE_CLIENT"/>
+            <generator class="native"/>
+        </id>
+        <property name="nomClient" type="java.lang.String" not-null="true">
+            <column name="NOM_CLIENT"/>
+        </property>
+        <property name="prenomClient" type="java.lang.String" not-null="true">
+            <column name="PRENOM_CLIENT"/>
+        </property>
+        <property name="numTelephone" type="java.lang.String" not-null="true">
+            <column name="NUM_TEL_CLIENT"/>
+        </property>
+        <set name="comptes" table="COMPTE" inverse="true" lazy="true">
+            <key>
+                <column name="CODE_CLIENT"/>
+            </key>
+            <one-to-many class="dao.Compte"/>
+        </set>
+
+    </class>
+
+</hibernate-mapping>

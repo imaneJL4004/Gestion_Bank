@@ -1,0 +1,15 @@
+<hibernate-mapping xmlns="http://www.hibernate.org/xsd/hibernate-mapping">
+    <class name="dao.Operation" table="OPERATION">
+        <id name="codeOperation">
+            <column name="CODE_OPERATION"/>
+            <generator class="native"/>
+        </id>
+        <property name="description" type="java.lang.String">
+            <column name="DESCRIPTION"/>
+        </property>
+        <property name="dateOp" type="java.util.Date">
+            <column name="DATE_OPERATION"/>
+        </property>
+        <many-to-one name="comptes" class="dao.Compte" column="NUMERO" not-null="true"/>
+    </class>
+</hibernate-mapping>
